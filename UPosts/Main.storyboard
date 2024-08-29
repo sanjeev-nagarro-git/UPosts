@@ -121,9 +121,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="9Rn-hI-Kbc"/>
-                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Favorite" id="F2z-v1-I0h"/>
+                    <tabBarItem key="tabBarItem" title="Favorite" image="star.fill" catalog="system" id="F2z-v1-I0h"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZHX-E6-yQm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -151,7 +151,7 @@
                             <constraint firstItem="EOc-QR-Ztf" firstAttribute="trailing" secondItem="nXt-Wr-7iL" secondAttribute="trailing" id="rPp-U5-NPw"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Post" id="qED-Kd-CZL"/>
+                    <tabBarItem key="tabBarItem" title="Post" image="square.and.pencil.circle" catalog="system" id="qED-Kd-CZL"/>
                     <connections>
                         <outlet property="postTableView" destination="nXt-Wr-7iL" id="eCx-AW-BaF"/>
                     </connections>
@@ -198,6 +198,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="square.and.pencil.circle" catalog="system" width="128" height="123"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -209,9 +211,6 @@
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
