@@ -17,7 +17,6 @@
 		1181F01B2C80C64C00B21876 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1181EFF42C80C64C00B21876 /* CoreDataManager.swift */; };
 		1181F01D2C80C64C00B21876 /* Posts+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1181EFF82C80C64C00B21876 /* Posts+CoreDataClass.swift */; };
 		1181F01E2C80C64C00B21876 /* Posts+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1181EFF92C80C64C00B21876 /* Posts+CoreDataProperties.swift */; };
-		1181F01F2C80C64C00B21876 /* UserPosts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1181EFFA2C80C64C00B21876 /* UserPosts.xcdatamodeld */; };
 		1181F0212C80C64C00B21876 /* DashboardTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1181EFFF2C80C64C00B21876 /* DashboardTabBarController.swift */; };
 		1181F0222C80C64C00B21876 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1181F0032C80C64C00B21876 /* FavoriteViewController.swift */; };
 		1181F0232C80C64C00B21876 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1181F0052C80C64C00B21876 /* FavoriteViewModel.swift */; };
@@ -34,6 +33,7 @@
 		1186D1072C81AEF9009AD727 /* LoginTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186D0F82C81AC59009AD727 /* LoginTestCases.swift */; };
 		1186D10B2C81B1D3009AD727 /* PostViewModelTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186D10A2C81B1D3009AD727 /* PostViewModelTestCases.swift */; };
 		1186D10D2C81B540009AD727 /* FavoriteViewModelTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186D10C2C81B540009AD727 /* FavoriteViewModelTestCases.swift */; };
+		1186D1552C81D6DA009AD727 /* UserPosts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1186D1532C81D6DA009AD727 /* UserPosts.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +56,6 @@
 		1181EFF42C80C64C00B21876 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		1181EFF82C80C64C00B21876 /* Posts+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Posts+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1181EFF92C80C64C00B21876 /* Posts+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Posts+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		1181EFFD2C80C64C00B21876 /* UserPosts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserPosts.xcdatamodel; sourceTree = "<group>"; };
 		1181EFFF2C80C64C00B21876 /* DashboardTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardTabBarController.swift; sourceTree = "<group>"; };
 		1181F0032C80C64C00B21876 /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		1181F0052C80C64C00B21876 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
@@ -74,6 +73,7 @@
 		1186D0FE2C81AEEB009AD727 /* UPostsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UPostsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1186D10A2C81B1D3009AD727 /* PostViewModelTestCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModelTestCases.swift; sourceTree = "<group>"; };
 		1186D10C2C81B540009AD727 /* FavoriteViewModelTestCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModelTestCases.swift; sourceTree = "<group>"; };
+		1186D1542C81D6DA009AD727 /* UserPosts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserPosts.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,9 +153,9 @@
 		1181EFFB2C80C64C00B21876 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				1186D1532C81D6DA009AD727 /* UserPosts.xcdatamodeld */,
 				1181EFF82C80C64C00B21876 /* Posts+CoreDataClass.swift */,
 				1181EFF92C80C64C00B21876 /* Posts+CoreDataProperties.swift */,
-				1181EFFA2C80C64C00B21876 /* UserPosts.xcdatamodeld */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -448,6 +448,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1186D1552C81D6DA009AD727 /* UserPosts.xcdatamodeld in Sources */,
 				1181F0272C80C64C00B21876 /* PostViewModel.swift in Sources */,
 				1181F01D2C80C64C00B21876 /* Posts+CoreDataClass.swift in Sources */,
 				1181F0262C80C64C00B21876 /* PostViewController.swift in Sources */,
@@ -460,7 +461,6 @@
 				1181F0212C80C64C00B21876 /* DashboardTabBarController.swift in Sources */,
 				1181F01B2C80C64C00B21876 /* CoreDataManager.swift in Sources */,
 				1181F01E2C80C64C00B21876 /* Posts+CoreDataProperties.swift in Sources */,
-				1181F01F2C80C64C00B21876 /* UserPosts.xcdatamodeld in Sources */,
 				1181F0292C80C64C00B21876 /* LoginViewController.swift in Sources */,
 				1181EFD62C80BEAB00B21876 /* SceneDelegate.swift in Sources */,
 				1181F0242C80C64C00B21876 /* NetworkService.swift in Sources */,
@@ -778,12 +778,12 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		1181EFFA2C80C64C00B21876 /* UserPosts.xcdatamodeld */ = {
+		1186D1532C81D6DA009AD727 /* UserPosts.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				1181EFFD2C80C64C00B21876 /* UserPosts.xcdatamodel */,
+				1186D1542C81D6DA009AD727 /* UserPosts.xcdatamodel */,
 			);
-			currentVersion = 1181EFFD2C80C64C00B21876 /* UserPosts.xcdatamodel */;
+			currentVersion = 1186D1542C81D6DA009AD727 /* UserPosts.xcdatamodel */;
 			name = UserPosts.xcdatamodeld;
 			path = /Users/sanjeevmishra/Documents/UPosts/UPosts/Resources/CoreData/UserPosts.xcdatamodeld;
 			sourceTree = "<group>";
