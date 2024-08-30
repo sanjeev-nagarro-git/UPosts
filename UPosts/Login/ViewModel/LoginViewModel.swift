@@ -39,7 +39,7 @@ final class LoginViewModel {
     }
     
     // Validate email entered by user
-    private static func isValidEmail(_ email: String) -> Bool {
+    static func isValidEmail(_ email: String) -> Bool {
         // Simple email validation regex
         let emailRegex = Constants.Login.emailRegex
         let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)

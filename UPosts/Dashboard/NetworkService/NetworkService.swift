@@ -11,34 +11,7 @@ import Alamofire
 import Foundation
 
 final class NetworkService {
-    
     private let baseURL = "https://jsonplaceholder.typicode.com"
-    
-    // Fetch posts from API
-    func fetchPosts() -> Observable<[Post]> {
-        let url = "\(baseURL)/posts"
-        
-        return Observable.create { observer in
-            AF.request(url, method: .get)
-                .validate()
-                .responseData { response in
-                    switch response.result {
-                    case .success(let data):
-                        do {
-                            let response = try JSONDecoder().decode([PostResponse].self, from: data)
-                            let posts = response.map { Post(userId: $0.userId, id: $0.id, title: $0.title, body: $0.body) }
-                            observer.onNext(posts)
-                            observer.onCompleted()
-                        } catch {
-                            observer.onError(error)
-                        }
-                    case .failure(let error):
-                        observer.onError(error)
-                    }
-                }
-            return Disposables.create()
-        }
-    }
     
     // Fetch posts from API
     func fetchPostsFromAPI() -> Single<[Post]> {
