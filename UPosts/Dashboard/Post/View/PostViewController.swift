@@ -11,7 +11,7 @@ import RxCocoa
 
 class PostViewController: UIViewController {
     @IBOutlet weak var postTableView: UITableView!
-    let viewModel = PostViewModel()
+    private let viewModel = PostViewModel()
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {

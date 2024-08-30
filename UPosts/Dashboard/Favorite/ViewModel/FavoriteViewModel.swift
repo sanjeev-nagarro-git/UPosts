@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class FavoriteViewModel {
+final class FavoriteViewModel {
     let navigationTitle = BehaviorSubject<String>(value: "Favorites")
     var favorites = BehaviorSubject(value: [Post]())
     private let disposeBag = DisposeBag()
@@ -26,7 +26,7 @@ class FavoriteViewModel {
     }
     
     // Fetch favorite post from local database
-    func fetchLocalFavoritePosts() -> Observable<[Post]> {
+    private func fetchLocalFavoritePosts() -> Observable<[Post]> {
         return Observable.create { observer in
             let posts = CoreDataManager.shared.fetchAllFavoritePosts()
             observer.onNext(posts)

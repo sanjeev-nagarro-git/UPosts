@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class PostViewModel {
+final class PostViewModel {
     // Observable for the navigation title
     let navigationTitle = BehaviorSubject<String>(value: "Posts")
     let postsSubject = BehaviorSubject(value: [Post]())
@@ -19,13 +19,20 @@ class PostViewModel {
     
     // Fethcing post from API/local database according the condition
     func fetchPosts() {
-        if NetworkManager.shared.isNetworkReachable() {
-            networkService.fetchPosts()
-                .subscribe(onNext: { [weak self] posts in
-                    self?.postsSubject.onNext(posts)
-                }, onError: { error in
-                    print("Failed to fetch posts: \(error)")
-                })
+        if NetworkReachability.shared.isNetworkReachable() {
+            networkService.fetchPostsFromAPI()
+                .subscribe { [weak self] event in
+                    switch event {
+                    case .success(let posts):
+                        let savedPosts = CoreDataManager.shared.fetchAllPosts()
+                        if savedPosts.isEmpty {
+                            CoreDataManager.shared.savePosts(posts: posts, completion: {_ in })
+                        }
+                        self?.postsSubject.onNext(savedPosts.isEmpty ? posts : savedPosts)
+                    case .failure(let error):
+                        print("Error fetching posts: \(error)")
+                    }
+                }
                 .disposed(by: disposeBag)
         } else {
             fetchLocalPosts()

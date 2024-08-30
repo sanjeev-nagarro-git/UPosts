@@ -7,7 +7,7 @@
 
 import CoreData
 
-class CoreDataManager {
+final class CoreDataManager {
     
     static let shared = CoreDataManager()
     
@@ -80,7 +80,7 @@ class CoreDataManager {
     }
     
     // Background context
-    func saveBackgroundContext() {
+    private func saveBackgroundContext() {
         let bgContext = backgroundContext
         if context.hasChanges {
             do {

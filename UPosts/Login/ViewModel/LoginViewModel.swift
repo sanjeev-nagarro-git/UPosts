@@ -9,13 +9,25 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class LoginViewModel {
+final class LoginViewModel {
     // Inputs
     let email = BehaviorSubject<String>(value: "")
     let password = BehaviorSubject<String>(value: "")
     
     // Output
     let isSubmitButtonEnabled: Observable<Bool>
+    // Combine email and password into a single LoginModel
+    private var loginModel: Observable<LoginModel> {
+        return Observable.combineLatest(email, password)
+            .map { email, password in
+                LoginModel(email: email, password: password)
+            }
+    }
+    
+    // Output
+    var loginModelObservable: Observable<LoginModel> {
+        return loginModel.asObservable()
+    }
     
     private let disposeBag = DisposeBag()
     

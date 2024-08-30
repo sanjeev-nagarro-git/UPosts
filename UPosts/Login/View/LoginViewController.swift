@@ -14,7 +14,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
-    let viewModel = LoginViewModel()
+    private let viewModel = LoginViewModel()
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -37,6 +37,13 @@ class LoginViewController: UIViewController {
         
         viewModel.isSubmitButtonEnabled
             .bind(to: loginButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        // Subscribe to login model observable
+        viewModel.loginModelObservable
+            .subscribe(onNext: { loginModel in
+                print("Login Model Updated: \(loginModel)")
+            })
             .disposed(by: disposeBag)
         
         loginButton.rx.tap

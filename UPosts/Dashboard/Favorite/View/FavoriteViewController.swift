@@ -10,9 +10,9 @@ import RxSwift
 import RxCocoa
 
 class FavoriteViewController: UIViewController {
-    let viewModel = FavoriteViewModel()
+    private let viewModel = FavoriteViewModel()
     private let disposeBag = DisposeBag()
-    lazy var tableView: UITableView = {
+    private lazy var tableView: UITableView = {
         let tb = UITableView(frame: self.view.frame)
         tb.translatesAutoresizingMaskIntoConstraints = false
         tb.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -33,7 +33,7 @@ class FavoriteViewController: UIViewController {
     }
     
     // Bind Tablview with data
-    func bindTableView() {
+    private func bindTableView() {
         viewModel.favorites
             .bind(to: tableView.rx.items(cellIdentifier: "cell")) { index, post, cell in
                 cell.textLabel?.text = post.title
