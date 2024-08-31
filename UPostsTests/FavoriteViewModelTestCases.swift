@@ -9,49 +9,86 @@
 import XCTest
 import RxSwift
 import RxCocoa
+import CoreData
 
-final class FavoriteViewModelTestCases: XCTestCase {
+final class FavoriteViewModelTests: XCTestCase {
     
-    private var viewModel: FavoriteViewModel!
-    private var disposeBag: DisposeBag!
+    var viewModel: FavoriteViewModel!
+    var mockCoreDataManager: MockFavoriteCDataManager!
+    var mockFetchedResultsController: MockFetchedResultsController!
+    var disposeBag: DisposeBag!
     
     override func setUp() {
         super.setUp()
+        mockCoreDataManager = MockFavoriteCDataManager()
+        mockFetchedResultsController = MockFetchedResultsController()
+        viewModel = FavoriteViewModel(coreDataManager: mockCoreDataManager, fetchedResultsController: mockFetchedResultsController)
         disposeBag = DisposeBag()
-        viewModel = FavoriteViewModel()
     }
     
     override func tearDown() {
         viewModel = nil
+        mockCoreDataManager = nil
+        mockFetchedResultsController = nil
         disposeBag = nil
         super.tearDown()
     }
     
-    func testGetFavoritePosts() {
-        // Act
-        viewModel.getFavoritePosts()
-        let posts = [Post(userId: 1, id: 1, title: "Test", body: "Body", isFavorite: true)]
-        viewModel.favorites.onNext(posts)
-        // Assert
+    func testInitialFetch() {
+        let post = Post(context: mockCoreDataManager.persistentContainer.viewContext)
+        post.userId = 1
+        post.id = 1
+        post.title = "Post 1"
+        post.body = "Body 1"
+        post.isFavorite = true
+        
+        mockFetchedResultsController.fetchedObjects = [post]
+        
+        // Reinitialize the view model to ensure it fetches the initial data
+        viewModel = FavoriteViewModel(coreDataManager: mockCoreDataManager, fetchedResultsController: mockFetchedResultsController)
+        
+        let expectation = self.expectation(description: "Initial fetch of favorite posts")
+        
         viewModel.favorites
             .subscribe(onNext: { posts in
-                XCTAssertEqual(posts.count, 1, "The number of favorite posts should be 2")
-                XCTAssertTrue(posts.contains(where: { $0.id == 1 }), "The favorite posts should contain post with id 1")
-                XCTAssertTrue(posts.contains(where: { $0.userId == 1 }), "The favorite posts should contain post with id 2")
+                XCTAssertEqual(posts.count, 1)
+                XCTAssertEqual(posts.first?.title, "Post 1")
+                expectation.fulfill()
             })
             .disposed(by: disposeBag)
+        
+        waitForExpectations(timeout: 1.0, handler: nil)
     }
+}
+
+class MockFavoriteCDataManager: FavoriteCDManagerProtocol {
+    var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "UPosts")
+        let description = NSPersistentStoreDescription()
+        description.type = NSInMemoryStoreType
+        container.persistentStoreDescriptions = [description]
+        container.loadPersistentStores { _, error in
+            if let error = error {
+                fatalError("Failed to load store: \(error)")
+            }
+        }
+        return container
+    }()
     
-    func testGetFavoritePostsWhenNoFavorites() {
-        // Act
-        viewModel.getFavoritePosts()
-        let posts = [Post(userId: 1, id: 1, title: "Test", body: "Body", isFavorite: true)]
-        viewModel.favorites.onNext(posts)
-        // Assert
-        viewModel.favorites
-            .subscribe(onNext: { posts in
-                XCTAssertEqual(posts.count, 1, "The favorite posts should be 2")
-            })
-            .disposed(by: disposeBag)
+    var favoritePosts: [PostDTO] = []
+    
+    func fetchAllFavoritePosts() -> [PostDTO] {
+        return favoritePosts
+    }
+}
+
+class MockFetchedResultsController: NSObject, FetchedResultsControllerProtocol {
+    weak var delegate: NSFetchedResultsControllerDelegate?
+    
+    var fetchedObjects: [Post]?
+    
+    func performFetch() throws {
+        // Simulate fetching data
+        delegate?.controllerDidChangeContent?(NSFetchedResultsController<NSFetchRequestResult>())
     }
 }

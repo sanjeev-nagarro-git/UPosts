@@ -8,15 +8,14 @@
 import Foundation
 import RxSwift
 import RxCocoa
-
-final class LoginViewModel {
+// Implement the LoginViewModelProtocol
+final class LoginViewModel: LoginViewModelProtocol {
     // Inputs
     let email = BehaviorSubject<String>(value: "")
     let password = BehaviorSubject<String>(value: "")
     
     // Output
     let isSubmitButtonEnabled: Observable<Bool>
-    // Combine email and password into a single LoginModel
     private var loginModel: Observable<LoginModel> {
         return Observable.combineLatest(email, password)
             .map { email, password in
@@ -30,25 +29,14 @@ final class LoginViewModel {
     }
     
     private let disposeBag = DisposeBag()
+    private let validator: LoginValidationProtocol.Type
     
-    init() {
+    // Dependency injection via initializer
+    init(validator: LoginValidationProtocol.Type = LoginValidation.self) {
+        self.validator = validator
         isSubmitButtonEnabled = Observable.combineLatest(email, password)
             .map { email, password in
-                return LoginViewModel.isValidEmail(email) && LoginViewModel.isValidPassword(password)
+                return validator.isValidEmail(email) && validator.isValidPassword(password)
             }
     }
-    
-    // Validate email entered by user
-    static func isValidEmail(_ email: String) -> Bool {
-        // Simple email validation regex
-        let emailRegex = Constants.Login.emailRegex
-        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
-        return emailPredicate.evaluate(with: email)
-    }
-    
-    // Validate password length
-    private static func isValidPassword(_ password: String) -> Bool {
-        return password.count >= 8 && password.count <= 15
-    }
 }
-

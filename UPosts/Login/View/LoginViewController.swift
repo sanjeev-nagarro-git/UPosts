@@ -41,8 +41,7 @@ class LoginViewController: UIViewController {
         
         // Subscribe to login model observable
         viewModel.loginModelObservable
-            .subscribe(onNext: { loginModel in
-                print("Login Model Updated: \(loginModel)")
+            .subscribe(onNext: { _ in
             })
             .disposed(by: disposeBag)
         

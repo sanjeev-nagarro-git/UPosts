@@ -39,12 +39,25 @@ final class CoreDataManager {
     // MARK: - Core Data stack
     
     lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "UserPosts")
+        let container = NSPersistentContainer(name: "UPosts")
         return container
     }()
     
     var context: NSManagedObjectContext {
         return persistentContainer.viewContext
+    }
+    
+    var favSearchResultController: FetchedResultsControllerWrapper {
+        let fetchRequest: NSFetchRequest<Post> = Post.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        fetchRequest.predicate = NSPredicate(format: "isFavorite == %@", NSNumber(value: true))
+        
+        // Initialize FetchedResultsControllerWrapper
+        let fetchedResultsController = FetchedResultsControllerWrapper(
+            fetchRequest: fetchRequest,
+            managedObjectContext: context
+        )
+        return fetchedResultsController
     }
     
     // MARK: - Private Queue Context
@@ -91,15 +104,17 @@ final class CoreDataManager {
             }
         }
     }
-    
+}
+
+extension CoreDataManager: CoreDataManagerProtocol {
     // Saving post from API in core data
-    func savePosts(posts: [Post], completion: @escaping (Error?) -> Void) {
+    func savePosts(posts: [PostDTO], completion: @escaping (Bool) -> Void) {
         let bgContext = backgroundContext
         bgContext.perform { [weak self] in
             do {
                 // Create Post entities for each Post object
                 for post in posts {
-                    let postEntity = Posts(context: bgContext)
+                    let postEntity = Post(context: bgContext)
                     postEntity.userId = Int32(post.userId)
                     postEntity.id = Int32(post.id)
                     postEntity.title = post.title
@@ -108,16 +123,37 @@ final class CoreDataManager {
                 }
                 try bgContext.save()
                 self?.saveContext()
-                completion(nil)
+                completion(true)
             } catch {
-                completion(error)
+                completion(false)
             }
         }
     }
     
+    // fetching all posts from core data
+    func fetchAllPosts() -> [PostDTO] {
+        let fetchRequest: NSFetchRequest<Post> = Post.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        do {
+            let postEntities = try context.fetch(fetchRequest)
+            return postEntities.map { postEntity in
+                return PostDTO(
+                    userId: Int(postEntity.userId),
+                    id: Int(postEntity.id),
+                    title: postEntity.title ?? "",
+                    body: postEntity.body ?? "",
+                    isFavorite: postEntity.isFavorite
+                )
+            }
+        } catch {
+            print("Failed to fetch posts: \(error)")
+            return []
+        }
+    }
+    
     // Update Post about is Favorite or not
-    func updatePostToFavorite(isFavorite: Bool, post: Post) {
-        let fetchRequest: NSFetchRequest<Posts> = Posts.fetchRequest() // Replace PostEntity with your Core Data entity name
+    func updatePostToFavorite(isFavorite: Bool, post: PostDTO) {
+        let fetchRequest: NSFetchRequest<Post> = Post.fetchRequest() // Replace PostEntity with your Core Data entity name
         
         // Create a predicate to fetch the specific post by its ID
         let predicate = NSPredicate(format: "id == %d", post.id)
@@ -141,36 +177,19 @@ final class CoreDataManager {
             print("Failed to update post: \(error)")
         }
     }
-    
-    // fetching all posts from core data
-    func fetchAllPosts() -> [Post] {
-        let fetchRequest: NSFetchRequest<Posts> = Posts.fetchRequest()
-        do {
-            let postEntities = try context.fetch(fetchRequest)
-            return postEntities.map { postEntity in
-                return Post(
-                    userId: Int(postEntity.userId),
-                    id: Int(postEntity.id),
-                    title: postEntity.title ?? "",
-                    body: postEntity.body ?? "",
-                    isFavorite: postEntity.isFavorite
-                )
-            }
-        } catch {
-            print("Failed to fetch posts: \(error)")
-            return []
-        }
-    }
-    
+}
+
+extension CoreDataManager: FavoriteCDManagerProtocol {
     // Fetching all favorite posts from core data
-    func fetchAllFavoritePosts() -> [Post] {
-        let fetchRequest: NSFetchRequest<Posts> = Posts.fetchRequest()
+    func fetchAllFavoritePosts() -> [PostDTO] {
+        let fetchRequest: NSFetchRequest<Post> = Post.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         let predicate = NSPredicate(format: "isFavorite == %@", NSNumber(value: true))
         fetchRequest.predicate = predicate
         do {
             let postEntities = try context.fetch(fetchRequest)
             return postEntities.map { postEntity in
-                return Post(
+                return PostDTO(
                     userId: Int(postEntity.userId),
                     id: Int(postEntity.id),
                     title: postEntity.title ?? "",
@@ -184,4 +203,3 @@ final class CoreDataManager {
         }
     }
 }
-

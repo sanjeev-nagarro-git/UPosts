@@ -1,8 +1,8 @@
 //
-//  Posts+CoreDataProperties.swift
+//  Post+CoreDataProperties.swift
 //  UPosts
 //
-//  Created by Sanjeev Mishra on 29/08/24.
+//  Created by Sanjeev Mishra on 30/08/24.
 //
 //
 
@@ -10,10 +10,10 @@ import Foundation
 import CoreData
 
 
-extension Posts {
+extension Post {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Posts> {
-        return NSFetchRequest<Posts>(entityName: "Posts")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Post> {
+        return NSFetchRequest<Post>(entityName: "Post")
     }
 
     @NSManaged public var id: Int32
@@ -24,6 +24,6 @@ extension Posts {
 
 }
 
-extension Posts : Identifiable {
+extension Post : Identifiable {
 
 }

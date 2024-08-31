@@ -8,14 +8,14 @@
 import Foundation
 
 // Post we are using in app
-struct Post: Equatable {
+struct PostDTO: Equatable {
     let userId: Int
     let id: Int
     let title: String
     let body: String
     var isFavorite = false
     
-    static func == (lhs: Post, rhs: Post) -> Bool {
+    static func == (lhs: PostDTO, rhs: PostDTO) -> Bool {
         return lhs.id == rhs.id
     }
 }

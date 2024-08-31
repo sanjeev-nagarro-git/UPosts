@@ -15,8 +15,6 @@
 		1181EFEE2C80BF2500B21876 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1181EFED2C80BF2500B21876 /* RxSwift */; };
 		1181EFF12C80BF5700B21876 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1181EFF02C80BF5700B21876 /* Alamofire */; };
 		1181F01B2C80C64C00B21876 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1181EFF42C80C64C00B21876 /* CoreDataManager.swift */; };
-		1181F01D2C80C64C00B21876 /* Posts+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1181EFF82C80C64C00B21876 /* Posts+CoreDataClass.swift */; };
-		1181F01E2C80C64C00B21876 /* Posts+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1181EFF92C80C64C00B21876 /* Posts+CoreDataProperties.swift */; };
 		1181F0212C80C64C00B21876 /* DashboardTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1181EFFF2C80C64C00B21876 /* DashboardTabBarController.swift */; };
 		1181F0222C80C64C00B21876 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1181F0032C80C64C00B21876 /* FavoriteViewController.swift */; };
 		1181F0232C80C64C00B21876 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1181F0052C80C64C00B21876 /* FavoriteViewModel.swift */; };
@@ -33,7 +31,18 @@
 		1186D1072C81AEF9009AD727 /* LoginTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186D0F82C81AC59009AD727 /* LoginTestCases.swift */; };
 		1186D10B2C81B1D3009AD727 /* PostViewModelTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186D10A2C81B1D3009AD727 /* PostViewModelTestCases.swift */; };
 		1186D10D2C81B540009AD727 /* FavoriteViewModelTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186D10C2C81B540009AD727 /* FavoriteViewModelTestCases.swift */; };
-		1186D1552C81D6DA009AD727 /* UserPosts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1186D1532C81D6DA009AD727 /* UserPosts.xcdatamodeld */; };
+		1186D15F2C81E285009AD727 /* UPosts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1186D15D2C81E285009AD727 /* UPosts.xcdatamodeld */; };
+		1186D1622C81E2DD009AD727 /* Post+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186D1602C81E2DD009AD727 /* Post+CoreDataClass.swift */; };
+		1186D1632C81E2DD009AD727 /* Post+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186D1612C81E2DD009AD727 /* Post+CoreDataProperties.swift */; };
+		1186D1652C81E9BA009AD727 /* TextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186D1642C81E9BA009AD727 /* TextFieldWithPadding.swift */; };
+		1186D1672C8204C2009AD727 /* LoginValidationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186D1662C8204C2009AD727 /* LoginValidationProtocol.swift */; };
+		1186D1692C8204E1009AD727 /* LoginViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186D1682C8204E1009AD727 /* LoginViewModelProtocol.swift */; };
+		1186D16B2C8204FF009AD727 /* LoginValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186D16A2C8204FF009AD727 /* LoginValidation.swift */; };
+		1186D16D2C820F85009AD727 /* NetworkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186D16C2C820F85009AD727 /* NetworkServiceProtocol.swift */; };
+		1186D16F2C820FA8009AD727 /* CoreDataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186D16E2C820FA8009AD727 /* CoreDataManagerProtocol.swift */; };
+		1186D1712C8214D4009AD727 /* FetchedResultsControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186D1702C8214D4009AD727 /* FetchedResultsControllerWrapper.swift */; };
+		1186D1732C821505009AD727 /* FavoriteCDManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186D1722C821505009AD727 /* FavoriteCDManagerProtocol.swift */; };
+		1186D1752C82152B009AD727 /* FetchedResultsControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186D1742C82152B009AD727 /* FetchedResultsControllerProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,8 +63,6 @@
 		1181EFE22C80BEAC00B21876 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1181EFE42C80BEAC00B21876 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1181EFF42C80C64C00B21876 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		1181EFF82C80C64C00B21876 /* Posts+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Posts+CoreDataClass.swift"; sourceTree = "<group>"; };
-		1181EFF92C80C64C00B21876 /* Posts+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Posts+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1181EFFF2C80C64C00B21876 /* DashboardTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardTabBarController.swift; sourceTree = "<group>"; };
 		1181F0032C80C64C00B21876 /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		1181F0052C80C64C00B21876 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
@@ -73,7 +80,18 @@
 		1186D0FE2C81AEEB009AD727 /* UPostsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UPostsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1186D10A2C81B1D3009AD727 /* PostViewModelTestCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModelTestCases.swift; sourceTree = "<group>"; };
 		1186D10C2C81B540009AD727 /* FavoriteViewModelTestCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModelTestCases.swift; sourceTree = "<group>"; };
-		1186D1542C81D6DA009AD727 /* UserPosts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserPosts.xcdatamodel; sourceTree = "<group>"; };
+		1186D15E2C81E285009AD727 /* UPosts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UPosts.xcdatamodel; sourceTree = "<group>"; };
+		1186D1602C81E2DD009AD727 /* Post+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post+CoreDataClass.swift"; sourceTree = "<group>"; };
+		1186D1612C81E2DD009AD727 /* Post+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		1186D1642C81E9BA009AD727 /* TextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPadding.swift; sourceTree = "<group>"; };
+		1186D1662C8204C2009AD727 /* LoginValidationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginValidationProtocol.swift; sourceTree = "<group>"; };
+		1186D1682C8204E1009AD727 /* LoginViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelProtocol.swift; sourceTree = "<group>"; };
+		1186D16A2C8204FF009AD727 /* LoginValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginValidation.swift; sourceTree = "<group>"; };
+		1186D16C2C820F85009AD727 /* NetworkServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceProtocol.swift; sourceTree = "<group>"; };
+		1186D16E2C820FA8009AD727 /* CoreDataManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerProtocol.swift; sourceTree = "<group>"; };
+		1186D1702C8214D4009AD727 /* FetchedResultsControllerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerWrapper.swift; sourceTree = "<group>"; };
+		1186D1722C821505009AD727 /* FavoriteCDManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCDManagerProtocol.swift; sourceTree = "<group>"; };
+		1186D1742C82152B009AD727 /* FetchedResultsControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,9 +171,9 @@
 		1181EFFB2C80C64C00B21876 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				1186D1532C81D6DA009AD727 /* UserPosts.xcdatamodeld */,
-				1181EFF82C80C64C00B21876 /* Posts+CoreDataClass.swift */,
-				1181EFF92C80C64C00B21876 /* Posts+CoreDataProperties.swift */,
+				1186D15D2C81E285009AD727 /* UPosts.xcdatamodeld */,
+				1186D1602C81E2DD009AD727 /* Post+CoreDataClass.swift */,
+				1186D1612C81E2DD009AD727 /* Post+CoreDataProperties.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -188,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				1181F0052C80C64C00B21876 /* FavoriteViewModel.swift */,
+				1186D1702C8214D4009AD727 /* FetchedResultsControllerWrapper.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -222,6 +241,8 @@
 		1181F00C2C80C64C00B21876 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				1186D16C2C820F85009AD727 /* NetworkServiceProtocol.swift */,
+				1186D16E2C820FA8009AD727 /* CoreDataManagerProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -284,6 +305,7 @@
 			isa = PBXGroup;
 			children = (
 				1181F0182C80C64C00B21876 /* LoginViewModel.swift */,
+				1186D16A2C8204FF009AD727 /* LoginValidation.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -303,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				1181F02E2C80C94C00B21876 /* Constants.swift */,
+				1186D1642C81E9BA009AD727 /* TextFieldWithPadding.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -317,6 +340,8 @@
 		1186D0B62C81AB52009AD727 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				1186D1722C821505009AD727 /* FavoriteCDManagerProtocol.swift */,
+				1186D1742C82152B009AD727 /* FetchedResultsControllerProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -324,6 +349,8 @@
 		1186D0B72C81AB69009AD727 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				1186D1662C8204C2009AD727 /* LoginValidationProtocol.swift */,
+				1186D1682C8204E1009AD727 /* LoginViewModelProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -448,24 +475,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1186D1552C81D6DA009AD727 /* UserPosts.xcdatamodeld in Sources */,
+				1186D1652C81E9BA009AD727 /* TextFieldWithPadding.swift in Sources */,
 				1181F0272C80C64C00B21876 /* PostViewModel.swift in Sources */,
-				1181F01D2C80C64C00B21876 /* Posts+CoreDataClass.swift in Sources */,
 				1181F0262C80C64C00B21876 /* PostViewController.swift in Sources */,
+				1186D1692C8204E1009AD727 /* LoginViewModelProtocol.swift in Sources */,
+				1186D1732C821505009AD727 /* FavoriteCDManagerProtocol.swift in Sources */,
 				1181F0282C80C64C00B21876 /* LoginModel.swift in Sources */,
 				1181EFD42C80BEAB00B21876 /* AppDelegate.swift in Sources */,
+				1186D1712C8214D4009AD727 /* FetchedResultsControllerWrapper.swift in Sources */,
 				1181F0252C80C64C00B21876 /* Post.swift in Sources */,
+				1186D1672C8204C2009AD727 /* LoginValidationProtocol.swift in Sources */,
+				1186D16F2C820FA8009AD727 /* CoreDataManagerProtocol.swift in Sources */,
+				1186D16B2C8204FF009AD727 /* LoginValidation.swift in Sources */,
 				1186D0B22C81A5A0009AD727 /* NetworkReachability.swift in Sources */,
+				1186D16D2C820F85009AD727 /* NetworkServiceProtocol.swift in Sources */,
 				1181F02A2C80C64C00B21876 /* LoginViewModel.swift in Sources */,
 				1181F0222C80C64C00B21876 /* FavoriteViewController.swift in Sources */,
 				1181F0212C80C64C00B21876 /* DashboardTabBarController.swift in Sources */,
+				1186D15F2C81E285009AD727 /* UPosts.xcdatamodeld in Sources */,
 				1181F01B2C80C64C00B21876 /* CoreDataManager.swift in Sources */,
-				1181F01E2C80C64C00B21876 /* Posts+CoreDataProperties.swift in Sources */,
 				1181F0292C80C64C00B21876 /* LoginViewController.swift in Sources */,
 				1181EFD62C80BEAB00B21876 /* SceneDelegate.swift in Sources */,
 				1181F0242C80C64C00B21876 /* NetworkService.swift in Sources */,
+				1186D1752C82152B009AD727 /* FetchedResultsControllerProtocol.swift in Sources */,
 				1181F0232C80C64C00B21876 /* FavoriteViewModel.swift in Sources */,
 				1181F02F2C80C94C00B21876 /* Constants.swift in Sources */,
+				1186D1622C81E2DD009AD727 /* Post+CoreDataClass.swift in Sources */,
+				1186D1632C81E2DD009AD727 /* Post+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -632,8 +668,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -659,8 +694,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -778,14 +812,14 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		1186D1532C81D6DA009AD727 /* UserPosts.xcdatamodeld */ = {
+		1186D15D2C81E285009AD727 /* UPosts.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				1186D1542C81D6DA009AD727 /* UserPosts.xcdatamodel */,
+				1186D15E2C81E285009AD727 /* UPosts.xcdatamodel */,
 			);
-			currentVersion = 1186D1542C81D6DA009AD727 /* UserPosts.xcdatamodel */;
-			name = UserPosts.xcdatamodeld;
-			path = /Users/sanjeevmishra/Documents/UPosts/UPosts/Resources/CoreData/UserPosts.xcdatamodeld;
+			currentVersion = 1186D15E2C81E285009AD727 /* UPosts.xcdatamodel */;
+			name = UPosts.xcdatamodeld;
+			path = /Users/sanjeevmishra/Documents/UPosts/UPosts/Resources/CoreData/UPosts.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

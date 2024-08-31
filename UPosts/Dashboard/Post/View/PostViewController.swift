@@ -40,7 +40,7 @@ class PostViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
-        postTableView.rx.modelSelected(Post.self)
+        postTableView.rx.modelSelected(PostDTO.self)
             .subscribe(onNext: { [weak self] item in
                 self?.viewModel.handleCellClick(item)
             })

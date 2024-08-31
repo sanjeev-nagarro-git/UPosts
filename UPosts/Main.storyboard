@@ -3,7 +3,6 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,10 +23,16 @@
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="715"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eoe-Ck-cpU">
-                                                <rect key="frame" x="20" y="273.66666666666669" width="353" height="168"/>
+                                                <rect key="frame" x="20" y="243" width="353" height="229"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qAP-y2-lNH">
-                                                        <rect key="frame" x="8" y="12" width="337" height="40"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l23-Uz-mWX">
+                                                        <rect key="frame" x="10" y="12" width="82" height="36"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qAP-y2-lNH" customClass="TextFieldWithPadding" customModule="UPosts" customModuleProvider="target">
+                                                        <rect key="frame" x="8" y="60" width="337" height="40"/>
                                                         <color key="backgroundColor" systemColor="systemGray4Color"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="u0Y-VZ-3ng"/>
@@ -35,40 +40,48 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rbh-dA-MX6">
-                                                        <rect key="frame" x="8" y="64" width="337" height="40"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rbh-dA-MX6" customClass="TextFieldWithPadding" customModule="UPosts" customModuleProvider="target">
+                                                        <rect key="frame" x="8" y="112" width="337" height="40"/>
                                                         <color key="backgroundColor" systemColor="systemGray4Color"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="cbJ-Va-biI"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lmf-UQ-awp">
-                                                        <rect key="frame" x="8" y="116" width="337" height="40"/>
-                                                        <color key="backgroundColor" name="AccentColor"/>
+                                                        <rect key="frame" x="8" y="164" width="337" height="40"/>
+                                                        <color key="backgroundColor" red="0.29803922770000002" green="0.64705884459999996" blue="0.74901962280000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="3fe-fK-xB1"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Login">
+                                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="16"/>
                                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </buttonConfiguration>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
+                                                    <constraint firstItem="l23-Uz-mWX" firstAttribute="leading" secondItem="eoe-Ck-cpU" secondAttribute="leading" constant="10" id="0dE-H2-fbo"/>
                                                     <constraint firstItem="rbh-dA-MX6" firstAttribute="top" secondItem="qAP-y2-lNH" secondAttribute="bottom" constant="12" id="1UT-Ay-H5I"/>
                                                     <constraint firstAttribute="trailing" secondItem="rbh-dA-MX6" secondAttribute="trailing" constant="8" id="84r-tk-pRR"/>
                                                     <constraint firstAttribute="trailing" secondItem="qAP-y2-lNH" secondAttribute="trailing" constant="8" id="AeU-ut-vrp"/>
+                                                    <constraint firstItem="qAP-y2-lNH" firstAttribute="top" secondItem="l23-Uz-mWX" secondAttribute="bottom" constant="12" id="Bbp-yl-1AZ"/>
                                                     <constraint firstItem="Lmf-UQ-awp" firstAttribute="top" secondItem="rbh-dA-MX6" secondAttribute="bottom" constant="12" id="Ire-Ip-UUz"/>
-                                                    <constraint firstItem="qAP-y2-lNH" firstAttribute="top" secondItem="eoe-Ck-cpU" secondAttribute="top" constant="12" id="NNg-Kl-hfX"/>
                                                     <constraint firstAttribute="trailing" secondItem="Lmf-UQ-awp" secondAttribute="trailing" constant="8" id="QV8-sT-Wo0"/>
                                                     <constraint firstItem="qAP-y2-lNH" firstAttribute="leading" secondItem="eoe-Ck-cpU" secondAttribute="leading" constant="8" id="cPl-8e-6od"/>
                                                     <constraint firstItem="rbh-dA-MX6" firstAttribute="leading" secondItem="eoe-Ck-cpU" secondAttribute="leading" constant="8" id="kmn-Em-dey"/>
-                                                    <constraint firstAttribute="bottom" secondItem="Lmf-UQ-awp" secondAttribute="bottom" constant="12" id="u7W-va-p9W"/>
+                                                    <constraint firstItem="l23-Uz-mWX" firstAttribute="top" secondItem="eoe-Ck-cpU" secondAttribute="top" constant="12" id="r6O-gc-6XA"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Lmf-UQ-awp" secondAttribute="bottom" constant="25" id="u7W-va-p9W"/>
                                                     <constraint firstItem="Lmf-UQ-awp" firstAttribute="leading" secondItem="eoe-Ck-cpU" secondAttribute="leading" constant="8" id="uNT-vc-mrU"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -200,17 +213,14 @@
     <resources>
         <image name="square.and.pencil.circle" catalog="system" width="128" height="123"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
-        <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray4Color">
-            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

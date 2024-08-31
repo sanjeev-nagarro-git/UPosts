@@ -10,25 +10,38 @@ import RxSwift
 import RxCocoa
 
 final class PostViewModel {
-    // Observable for the navigation title
-    let navigationTitle = BehaviorSubject<String>(value: "Posts")
-    let postsSubject = BehaviorSubject(value: [Post]())
-    private let favoritedPosts = BehaviorSubject<Set<String>>(value: Set())
-    private let networkService = NetworkService()
+    private var _postsSubject = BehaviorSubject(value: [PostDTO]())
+    var postsSubject: Observable<[PostDTO]> {
+        _postsSubject.asObservable()
+    }
+    
+    private let networkService: NetworkServiceProtocol
+    private let coreDataManager: CoreDataManagerProtocol
     private let disposeBag = DisposeBag()
     
-    // Fethcing post from API/local database according the condition
+    // Dependency injection via initializer
+    init(networkService: NetworkServiceProtocol = NetworkService(), coreDataManager: CoreDataManagerProtocol = CoreDataManager.shared) {
+        self.networkService = networkService
+        self.coreDataManager = coreDataManager
+        
+        // Initialize _postsSubject with initial posts from CoreDataManager
+        let initialPosts = coreDataManager.fetchAllPosts()
+        _postsSubject = BehaviorSubject(value: initialPosts)
+    }
+    
+    // Fetching posts from API/local database according to the condition
     func fetchPosts() {
-        if NetworkReachability.shared.isNetworkReachable() {
+        if NetworkReachability.isNetworkReachable() {
             networkService.fetchPostsFromAPI()
                 .subscribe { [weak self] event in
                     switch event {
                     case .success(let posts):
-                        let savedPosts = CoreDataManager.shared.fetchAllPosts()
+                        let savedPosts = self?.coreDataManager.fetchAllPosts() ?? []
                         if savedPosts.isEmpty {
-                            CoreDataManager.shared.savePosts(posts: posts, completion: {_ in })
+                            self?.coreDataManager.savePosts(posts: posts, completion: {_ in })
                         }
-                        self?.postsSubject.onNext(savedPosts.isEmpty ? posts : savedPosts)
+                        let sortedPosts = posts.sorted { $0.title<$1.title }
+                        self?._postsSubject.onNext(savedPosts.isEmpty ? sortedPosts : savedPosts)
                     case .failure(let error):
                         print("Error fetching posts: \(error)")
                     }
@@ -37,7 +50,7 @@ final class PostViewModel {
         } else {
             fetchLocalPosts()
                 .subscribe(onNext: { [weak self] posts in
-                    self?.postsSubject.onNext(posts)
+                    self?._postsSubject.onNext(posts)
                 }, onError: { error in
                     print("Failed to fetch posts: \(error)")
                 })
@@ -46,29 +59,25 @@ final class PostViewModel {
     }
     
     // Handle post row click
-    func handleCellClick(_ selectedPost: Post) {
-        // Get the current posts from the postsSubject
-        postsSubject
-            .take(1) // Take the first emitted value (current value)
+    func handleCellClick(_ selectedPost: PostDTO) {
+        _postsSubject
+            .take(1)
             .subscribe(onNext: { [weak self] posts in
-                // Find the index of the selected post
                 guard let index = posts.firstIndex(where: { $0.id == selectedPost.id }) else { return }
                 
-                // Create an updated post with the 'isFavorite' flag toggled
                 var updatedPosts = posts
-                updatedPosts[index].isFavorite.toggle() // Toggle the isFavorited property
-                                
-                CoreDataManager.shared.updatePostToFavorite(isFavorite: updatedPosts[index].isFavorite, post: selectedPost)
-                // Emit the updated list to postsSubject
-                self?.postsSubject.onNext(updatedPosts)
+                updatedPosts[index].isFavorite.toggle()
+                
+                self?.coreDataManager.updatePostToFavorite(isFavorite: updatedPosts[index].isFavorite, post: selectedPost)
+                self?._postsSubject.onNext(updatedPosts)
             })
             .disposed(by: disposeBag)
     }
     
-    // Get post from local database
-    func fetchLocalPosts() -> Observable<[Post]> {
+    // Get posts from local database
+    func fetchLocalPosts() -> Observable<[PostDTO]> {
         return Observable.create { observer in
-            let posts = CoreDataManager.shared.fetchAllPosts()
+            let posts = self.coreDataManager.fetchAllPosts()
             observer.onNext(posts)
             observer.onCompleted()
             return Disposables.create()

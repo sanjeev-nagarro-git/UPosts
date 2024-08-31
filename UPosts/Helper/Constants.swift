@@ -7,16 +7,16 @@
 
 import Foundation
 
-struct Constants {
-    struct Login {
+enum Constants {
+    enum Login {
         static let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}"
     }
     
-    struct Favorite {
+    enum Favorite {
         static let screenTitle = "Favorites"
     }
     
-    struct Post {
+    enum Post {
         static let screenTitle = "Posts"
     }
 }
