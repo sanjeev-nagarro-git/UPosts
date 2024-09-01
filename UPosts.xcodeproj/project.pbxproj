@@ -31,7 +31,6 @@
 		1186D1072C81AEF9009AD727 /* LoginTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186D0F82C81AC59009AD727 /* LoginTestCases.swift */; };
 		1186D10B2C81B1D3009AD727 /* PostViewModelTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186D10A2C81B1D3009AD727 /* PostViewModelTestCases.swift */; };
 		1186D10D2C81B540009AD727 /* FavoriteViewModelTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186D10C2C81B540009AD727 /* FavoriteViewModelTestCases.swift */; };
-		1186D15F2C81E285009AD727 /* UPosts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1186D15D2C81E285009AD727 /* UPosts.xcdatamodeld */; };
 		1186D1622C81E2DD009AD727 /* Post+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186D1602C81E2DD009AD727 /* Post+CoreDataClass.swift */; };
 		1186D1632C81E2DD009AD727 /* Post+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186D1612C81E2DD009AD727 /* Post+CoreDataProperties.swift */; };
 		1186D1652C81E9BA009AD727 /* TextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186D1642C81E9BA009AD727 /* TextFieldWithPadding.swift */; };
@@ -43,6 +42,7 @@
 		1186D1712C8214D4009AD727 /* FetchedResultsControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186D1702C8214D4009AD727 /* FetchedResultsControllerWrapper.swift */; };
 		1186D1732C821505009AD727 /* FavoriteCDManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186D1722C821505009AD727 /* FavoriteCDManagerProtocol.swift */; };
 		1186D1752C82152B009AD727 /* FetchedResultsControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186D1742C82152B009AD727 /* FetchedResultsControllerProtocol.swift */; };
+		11CCE8E42C8439BE008BBAB1 /* UPosts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 11CCE8E22C8439BE008BBAB1 /* UPosts.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,7 +80,6 @@
 		1186D0FE2C81AEEB009AD727 /* UPostsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UPostsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1186D10A2C81B1D3009AD727 /* PostViewModelTestCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModelTestCases.swift; sourceTree = "<group>"; };
 		1186D10C2C81B540009AD727 /* FavoriteViewModelTestCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModelTestCases.swift; sourceTree = "<group>"; };
-		1186D15E2C81E285009AD727 /* UPosts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UPosts.xcdatamodel; sourceTree = "<group>"; };
 		1186D1602C81E2DD009AD727 /* Post+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1186D1612C81E2DD009AD727 /* Post+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1186D1642C81E9BA009AD727 /* TextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPadding.swift; sourceTree = "<group>"; };
@@ -92,6 +91,7 @@
 		1186D1702C8214D4009AD727 /* FetchedResultsControllerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerWrapper.swift; sourceTree = "<group>"; };
 		1186D1722C821505009AD727 /* FavoriteCDManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCDManagerProtocol.swift; sourceTree = "<group>"; };
 		1186D1742C82152B009AD727 /* FetchedResultsControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerProtocol.swift; sourceTree = "<group>"; };
+		11CCE8E32C8439BE008BBAB1 /* UPosts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UPosts.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,7 +171,7 @@
 		1181EFFB2C80C64C00B21876 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				1186D15D2C81E285009AD727 /* UPosts.xcdatamodeld */,
+				11CCE8E22C8439BE008BBAB1 /* UPosts.xcdatamodeld */,
 				1186D1602C81E2DD009AD727 /* Post+CoreDataClass.swift */,
 				1186D1612C81E2DD009AD727 /* Post+CoreDataProperties.swift */,
 			);
@@ -214,8 +214,8 @@
 		1181F0072C80C64C00B21876 /* Favorite */ = {
 			isa = PBXGroup;
 			children = (
+				11CCE8E52C8439D3008BBAB1 /* Model */,
 				1186D0B62C81AB52009AD727 /* Protocols */,
-				1186D0B32C81AB09009AD727 /* Model */,
 				1181F0042C80C64C00B21876 /* View */,
 				1181F0062C80C64C00B21876 /* ViewModel */,
 			);
@@ -330,13 +330,6 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
-		1186D0B32C81AB09009AD727 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		1186D0B62C81AB52009AD727 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -363,6 +356,13 @@
 				1186D10C2C81B540009AD727 /* FavoriteViewModelTestCases.swift */,
 			);
 			path = UPostsTests;
+			sourceTree = "<group>";
+		};
+		11CCE8E52C8439D3008BBAB1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -492,8 +492,8 @@
 				1181F02A2C80C64C00B21876 /* LoginViewModel.swift in Sources */,
 				1181F0222C80C64C00B21876 /* FavoriteViewController.swift in Sources */,
 				1181F0212C80C64C00B21876 /* DashboardTabBarController.swift in Sources */,
-				1186D15F2C81E285009AD727 /* UPosts.xcdatamodeld in Sources */,
 				1181F01B2C80C64C00B21876 /* CoreDataManager.swift in Sources */,
+				11CCE8E42C8439BE008BBAB1 /* UPosts.xcdatamodeld in Sources */,
 				1181F0292C80C64C00B21876 /* LoginViewController.swift in Sources */,
 				1181EFD62C80BEAB00B21876 /* SceneDelegate.swift in Sources */,
 				1181F0242C80C64C00B21876 /* NetworkService.swift in Sources */,
@@ -812,14 +812,14 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		1186D15D2C81E285009AD727 /* UPosts.xcdatamodeld */ = {
+		11CCE8E22C8439BE008BBAB1 /* UPosts.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				1186D15E2C81E285009AD727 /* UPosts.xcdatamodel */,
+				11CCE8E32C8439BE008BBAB1 /* UPosts.xcdatamodel */,
 			);
-			currentVersion = 1186D15E2C81E285009AD727 /* UPosts.xcdatamodel */;
+			currentVersion = 11CCE8E32C8439BE008BBAB1 /* UPosts.xcdatamodel */;
 			name = UPosts.xcdatamodeld;
-			path = /Users/sanjeevmishra/Documents/UPosts/UPosts/Resources/CoreData/UPosts.xcdatamodeld;
+			path = /Users/sanjeevmishra/Documents/Working/UPosts/UPosts/Resources/CoreData/UPosts.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
