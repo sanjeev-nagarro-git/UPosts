@@ -42,7 +42,7 @@
 		1186D1712C8214D4009AD727 /* FetchedResultsControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186D1702C8214D4009AD727 /* FetchedResultsControllerWrapper.swift */; };
 		1186D1732C821505009AD727 /* FavoriteCDManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186D1722C821505009AD727 /* FavoriteCDManagerProtocol.swift */; };
 		1186D1752C82152B009AD727 /* FetchedResultsControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186D1742C82152B009AD727 /* FetchedResultsControllerProtocol.swift */; };
-		11CCE8E82C843B3F008BBAB1 /* UPosts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 11CCE8E62C843B3F008BBAB1 /* UPosts.xcdatamodeld */; };
+		11CCE8EC2C843FE5008BBAB1 /* UPosts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 11CCE8EA2C843FE5008BBAB1 /* UPosts.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,7 +91,7 @@
 		1186D1702C8214D4009AD727 /* FetchedResultsControllerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerWrapper.swift; sourceTree = "<group>"; };
 		1186D1722C821505009AD727 /* FavoriteCDManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCDManagerProtocol.swift; sourceTree = "<group>"; };
 		1186D1742C82152B009AD727 /* FetchedResultsControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerProtocol.swift; sourceTree = "<group>"; };
-		11CCE8E72C843B3F008BBAB1 /* UPosts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UPosts.xcdatamodel; sourceTree = "<group>"; };
+		11CCE8EB2C843FE5008BBAB1 /* UPosts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UPosts.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,7 +171,7 @@
 		1181EFFB2C80C64C00B21876 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				11CCE8E62C843B3F008BBAB1 /* UPosts.xcdatamodeld */,
+				11CCE8EA2C843FE5008BBAB1 /* UPosts.xcdatamodeld */,
 				1186D1602C81E2DD009AD727 /* Post+CoreDataClass.swift */,
 				1186D1612C81E2DD009AD727 /* Post+CoreDataProperties.swift */,
 			);
@@ -488,7 +488,7 @@
 				1186D16F2C820FA8009AD727 /* CoreDataManagerProtocol.swift in Sources */,
 				1186D16B2C8204FF009AD727 /* LoginValidation.swift in Sources */,
 				1186D0B22C81A5A0009AD727 /* NetworkReachability.swift in Sources */,
-				11CCE8E82C843B3F008BBAB1 /* UPosts.xcdatamodeld in Sources */,
+				11CCE8EC2C843FE5008BBAB1 /* UPosts.xcdatamodeld in Sources */,
 				1186D16D2C820F85009AD727 /* NetworkServiceProtocol.swift in Sources */,
 				1181F02A2C80C64C00B21876 /* LoginViewModel.swift in Sources */,
 				1181F0222C80C64C00B21876 /* FavoriteViewController.swift in Sources */,
@@ -812,14 +812,14 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		11CCE8E62C843B3F008BBAB1 /* UPosts.xcdatamodeld */ = {
+		11CCE8EA2C843FE5008BBAB1 /* UPosts.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				11CCE8E72C843B3F008BBAB1 /* UPosts.xcdatamodel */,
+				11CCE8EB2C843FE5008BBAB1 /* UPosts.xcdatamodel */,
 			);
-			currentVersion = 11CCE8E72C843B3F008BBAB1 /* UPosts.xcdatamodel */;
+			currentVersion = 11CCE8EB2C843FE5008BBAB1 /* UPosts.xcdatamodel */;
 			name = UPosts.xcdatamodeld;
-			path = /Users/sanjeevmishra/Documents/TestFolder/UPosts/UPosts/Resources/CoreData/UPosts.xcdatamodeld;
+			path = /Users/sanjeevmishra/Documents/Due/UPosts/UPosts/Resources/CoreData/UPosts.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
