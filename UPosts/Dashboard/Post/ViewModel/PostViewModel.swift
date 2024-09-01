@@ -20,7 +20,7 @@ final class PostViewModel {
     private let disposeBag = DisposeBag()
     
     // Dependency injection via initializer
-    init(networkService: NetworkServiceProtocol = NetworkService(), coreDataManager: CoreDataManagerProtocol = CoreDataManager.shared) {
+    init(networkService: NetworkServiceProtocol = PostService(), coreDataManager: CoreDataManagerProtocol = CoreDataManager.shared) {
         self.networkService = networkService
         self.coreDataManager = coreDataManager
         
