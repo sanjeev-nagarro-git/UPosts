@@ -214,7 +214,7 @@
 		1181F0072C80C64C00B21876 /* Favorite */ = {
 			isa = PBXGroup;
 			children = (
-				11CCE8E92C843E75008BBAB1 /* Model */,
+				11CCE8F02C844611008BBAB1 /* Model */,
 				1186D0B62C81AB52009AD727 /* Protocols */,
 				1181F0042C80C64C00B21876 /* View */,
 				1181F0062C80C64C00B21876 /* ViewModel */,
@@ -358,7 +358,7 @@
 			path = UPostsTests;
 			sourceTree = "<group>";
 		};
-		11CCE8E92C843E75008BBAB1 /* Model */ = {
+		11CCE8F02C844611008BBAB1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 			);
