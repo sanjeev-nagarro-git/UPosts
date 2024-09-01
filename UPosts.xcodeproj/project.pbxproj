@@ -43,6 +43,7 @@
 		1186D1732C821505009AD727 /* FavoriteCDManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186D1722C821505009AD727 /* FavoriteCDManagerProtocol.swift */; };
 		1186D1752C82152B009AD727 /* FetchedResultsControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186D1742C82152B009AD727 /* FetchedResultsControllerProtocol.swift */; };
 		11CCE8EF2C844471008BBAB1 /* UPosts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 11CCE8ED2C844471008BBAB1 /* UPosts.xcdatamodeld */; };
+		11CCE8F52C844714008BBAB1 /* FavoriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CCE8F42C844714008BBAB1 /* FavoriteModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 		1186D1722C821505009AD727 /* FavoriteCDManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCDManagerProtocol.swift; sourceTree = "<group>"; };
 		1186D1742C82152B009AD727 /* FetchedResultsControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerProtocol.swift; sourceTree = "<group>"; };
 		11CCE8EE2C844471008BBAB1 /* UPosts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UPosts.xcdatamodel; sourceTree = "<group>"; };
+		11CCE8F42C844714008BBAB1 /* FavoriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -361,6 +363,7 @@
 		11CCE8F02C844611008BBAB1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				11CCE8F42C844714008BBAB1 /* FavoriteModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -478,6 +481,7 @@
 				1186D1652C81E9BA009AD727 /* TextFieldWithPadding.swift in Sources */,
 				1181F0272C80C64C00B21876 /* PostViewModel.swift in Sources */,
 				1181F0262C80C64C00B21876 /* PostViewController.swift in Sources */,
+				11CCE8F52C844714008BBAB1 /* FavoriteModel.swift in Sources */,
 				1186D1692C8204E1009AD727 /* LoginViewModelProtocol.swift in Sources */,
 				1186D1732C821505009AD727 /* FavoriteCDManagerProtocol.swift in Sources */,
 				1181F0282C80C64C00B21876 /* LoginModel.swift in Sources */,
