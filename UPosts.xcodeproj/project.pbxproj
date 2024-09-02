@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		111C81D02C8577D900575C39 /* UPosts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 111C81CE2C8577D900575C39 /* UPosts.xcdatamodeld */; };
 		1181EFD42C80BEAB00B21876 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1181EFD32C80BEAB00B21876 /* AppDelegate.swift */; };
 		1181EFD62C80BEAB00B21876 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1181EFD52C80BEAB00B21876 /* SceneDelegate.swift */; };
 		1181EFE02C80BEAC00B21876 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1181EFDF2C80BEAC00B21876 /* Assets.xcassets */; };
@@ -44,7 +45,6 @@
 		1186D1752C82152B009AD727 /* FetchedResultsControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186D1742C82152B009AD727 /* FetchedResultsControllerProtocol.swift */; };
 		118D919E2C84A48B0026812D /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118D919D2C84A48B0026812D /* NetworkError.swift */; };
 		118D91A02C84A4A00026812D /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118D919F2C84A4A00026812D /* PostService.swift */; };
-		11CCE8EF2C844471008BBAB1 /* UPosts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 11CCE8ED2C844471008BBAB1 /* UPosts.xcdatamodeld */; };
 		11CCE8F52C844714008BBAB1 /* FavoriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CCE8F42C844714008BBAB1 /* FavoriteModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		111C81CF2C8577D900575C39 /* UPosts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UPosts.xcdatamodel; sourceTree = "<group>"; };
 		1181EFD02C80BEAB00B21876 /* UPosts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UPosts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1181EFD32C80BEAB00B21876 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1181EFD52C80BEAB00B21876 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,7 +97,6 @@
 		1186D1742C82152B009AD727 /* FetchedResultsControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerProtocol.swift; sourceTree = "<group>"; };
 		118D919D2C84A48B0026812D /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		118D919F2C84A4A00026812D /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
-		11CCE8EE2C844471008BBAB1 /* UPosts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UPosts.xcdatamodel; sourceTree = "<group>"; };
 		11CCE8F42C844714008BBAB1 /* FavoriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -177,7 +177,6 @@
 		1181EFFB2C80C64C00B21876 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				11CCE8ED2C844471008BBAB1 /* UPosts.xcdatamodeld */,
 				1186D1602C81E2DD009AD727 /* Post+CoreDataClass.swift */,
 				1186D1612C81E2DD009AD727 /* Post+CoreDataProperties.swift */,
 			);
@@ -187,6 +186,7 @@
 		1181EFFC2C80C64C00B21876 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				111C81CE2C8577D900575C39 /* UPosts.xcdatamodeld */,
 				1181EFFB2C80C64C00B21876 /* CoreData */,
 			);
 			path = Resources;
@@ -504,8 +504,8 @@
 				1181F0222C80C64C00B21876 /* FavoriteViewController.swift in Sources */,
 				1181F0212C80C64C00B21876 /* DashboardTabBarController.swift in Sources */,
 				1181F01B2C80C64C00B21876 /* CoreDataManager.swift in Sources */,
-				11CCE8EF2C844471008BBAB1 /* UPosts.xcdatamodeld in Sources */,
 				1181F0292C80C64C00B21876 /* LoginViewController.swift in Sources */,
+				111C81D02C8577D900575C39 /* UPosts.xcdatamodeld in Sources */,
 				1181EFD62C80BEAB00B21876 /* SceneDelegate.swift in Sources */,
 				1181F0242C80C64C00B21876 /* NetworkService.swift in Sources */,
 				1186D1752C82152B009AD727 /* FetchedResultsControllerProtocol.swift in Sources */,
@@ -824,14 +824,14 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		11CCE8ED2C844471008BBAB1 /* UPosts.xcdatamodeld */ = {
+		111C81CE2C8577D900575C39 /* UPosts.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				11CCE8EE2C844471008BBAB1 /* UPosts.xcdatamodel */,
+				111C81CF2C8577D900575C39 /* UPosts.xcdatamodel */,
 			);
-			currentVersion = 11CCE8EE2C844471008BBAB1 /* UPosts.xcdatamodel */;
+			currentVersion = 111C81CF2C8577D900575C39 /* UPosts.xcdatamodel */;
 			name = UPosts.xcdatamodeld;
-			path = /Users/sanjeevmishra/Documents/Test/UPosts/UPosts/Resources/CoreData/UPosts.xcdatamodeld;
+			path = /Users/sanjeevmishra/Documents/Test/UPosts/UPosts/Resources/UPosts.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
