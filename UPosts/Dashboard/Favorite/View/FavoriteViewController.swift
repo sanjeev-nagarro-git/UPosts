@@ -8,10 +8,9 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import CoreData
 
 class FavoriteViewController: UIViewController {
-    private var viewModel: FavoriteViewModel!
+    private var viewModel = FavoriteViewModel()
     private let disposeBag = DisposeBag()
     private lazy var tableView: UITableView = {
         let tb = UITableView(frame: self.view.frame)
@@ -23,9 +22,7 @@ class FavoriteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let coreDataManager = CoreDataManager.shared
         // Initialize FavoriteViewModel with dependencies
-        viewModel = FavoriteViewModel(coreDataManager: coreDataManager, fetchedResultsController: coreDataManager.favSearchResultController)
         addTableView()
         bindTableView()
     }

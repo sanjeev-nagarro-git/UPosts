@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
-import CoreData
+import RealmSwift
 
 final class FavoriteViewModel: NSObject {
     private var _favorites = BehaviorSubject(value: [PostDTO]())
@@ -16,84 +16,27 @@ final class FavoriteViewModel: NSObject {
         _favorites.asObservable()
     }
     private let disposeBag = DisposeBag()
-    private let fetchedResultsController: FetchedResultsControllerProtocol
-    private let coreDataManager: FavoriteCDManagerProtocol
+    private var notificationToken: NotificationToken?
+    private let realmService: RealmFavoriteServiceProtocol
     
-    // Dependency injection via initializer
-    init(coreDataManager: FavoriteCDManagerProtocol = CoreDataManager.shared,
-         fetchedResultsController: FetchedResultsControllerProtocol) {
-        
-        self.coreDataManager = coreDataManager
-        self.fetchedResultsController = fetchedResultsController
-        
+    init(realmService: RealmFavoriteServiceProtocol = RealmServiceManager()) {
+        self.realmService = realmService
         super.init()
-        
-        // Set the delegate
-        self.fetchedResultsController.delegate = self
-        
-        // Perform the fetch
-        do {
-            try self.fetchedResultsController.performFetch()
-            // Initialize the BehaviorSubject with fetched results
-            let postDTOs = transformPostsToPostDTOs(self.fetchedResultsController.fetchedObjects ?? [])
-            _favorites.onNext(postDTOs)
-        } catch {
-            print("Failed to fetch initial data: \(error)")
-        }
+        observeFavorites()
     }
     
-    // Fetch favorite post from local database
-    private func fetchLocalFavoritePosts() -> Observable<[PostDTO]> {
-        return Observable.create { observer in
-            let posts = self.coreDataManager.fetchAllFavoritePosts()
-            observer.onNext(posts)
-            observer.onCompleted()
-            return Disposables.create()
-        }
+    deinit {
+        notificationToken?.invalidate()
     }
     
-    // Transform Post entities to PostDTO
-    private func transformPostsToPostDTOs(_ posts: [Post]) -> [PostDTO] {
-        return posts.map { post in
-            return PostDTO(
-                userId: Int(post.userId),
-                id: Int(post.id),
-                title: post.title ?? "",
-                body: post.body ?? "",
-                isFavorite: post.isFavorite
-            )
-        }
-    }
-}
-
-// MARK: - NSFetchedResultsControllerDelegate
-
-extension FavoriteViewModel: NSFetchedResultsControllerDelegate {
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch type {
-        case .insert:
-            if let newPost = anObject as? Post {
-                var currentPostsDTOs = (try? _favorites.value()) ?? []
-                let newPostDTO = transformPostsToPostDTOs([newPost]).first!
-                currentPostsDTOs.append(newPostDTO)
-                _favorites.onNext(currentPostsDTOs)
+    func observeFavorites() {
+        notificationToken = realmService.observeFavoritePosts { [weak self] result in
+            switch result {
+            case .success(let postDTOs):
+                self?._favorites.onNext(postDTOs)
+            case .failure(let error):
+                print("Error observing favorites: \(error)")
             }
-        case .delete:
-            if let _ = indexPath, let deletedPost = anObject as? Post {
-                var currentPostsDTOs = (try? _favorites.value()) ?? []
-                let deletedPostDTOs = transformPostsToPostDTOs([deletedPost])
-                currentPostsDTOs.removeAll { deletedPostDTOs.contains($0) }
-                _favorites.onNext(currentPostsDTOs)
-            }
-        case .update:
-            // Handle updates
-            let updatedPostsDTOs = transformPostsToPostDTOs(fetchedResultsController.fetchedObjects ?? [])
-            _favorites.onNext(updatedPostsDTOs)
-        case .move:
-            // Handle moves if needed
-            break
-        @unknown default:
-            fatalError("Unhandled change type")
         }
     }
 }
