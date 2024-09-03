@@ -8,6 +8,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import RealmSwift
 
 final class PostViewModel {
     private var _postsSubject = BehaviorSubject(value: [PostDTO]())
@@ -16,17 +17,14 @@ final class PostViewModel {
     }
     
     private let networkService: NetworkServiceProtocol
-    private let coreDataManager: CoreDataManagerProtocol
     private let disposeBag = DisposeBag()
+    private let realmService: RealmPostServiceProtocol
     
     // Dependency injection via initializer
-    init(networkService: NetworkServiceProtocol = PostService(), coreDataManager: CoreDataManagerProtocol = CoreDataManager.shared) {
+    init(networkService: NetworkServiceProtocol = PostService(), 
+         realmService: RealmPostServiceProtocol = RealmServiceManager()) {
         self.networkService = networkService
-        self.coreDataManager = coreDataManager
-        
-        // Initialize _postsSubject with initial posts from CoreDataManager
-        let initialPosts = coreDataManager.fetchAllPosts()
-        _postsSubject = BehaviorSubject(value: initialPosts)
+        self.realmService = realmService
     }
     
     // Fetching posts from API/local database according to the condition
@@ -36,9 +34,9 @@ final class PostViewModel {
                 .subscribe { [weak self] event in
                     switch event {
                     case .success(let posts):
-                        let savedPosts = self?.coreDataManager.fetchAllPosts() ?? []
+                        let savedPosts = self?.realmService.fetchPosts() ?? []
                         if savedPosts.isEmpty {
-                            self?.coreDataManager.savePosts(posts: posts, completion: {_ in })
+                            self?.realmService.savePosts(posts, completion: { _ in })
                         }
                         let sortedPosts = posts.sorted { $0.title<$1.title }
                         self?._postsSubject.onNext(savedPosts.isEmpty ? sortedPosts : savedPosts)
@@ -67,8 +65,7 @@ final class PostViewModel {
                 
                 var updatedPosts = posts
                 updatedPosts[index].isFavorite.toggle()
-                
-                self?.coreDataManager.updatePostToFavorite(isFavorite: updatedPosts[index].isFavorite, post: selectedPost)
+                self?.realmService.updatePostFavoriteStatus(postId: selectedPost.id, isFavorite: !selectedPost.isFavorite)
                 self?._postsSubject.onNext(updatedPosts)
             })
             .disposed(by: disposeBag)
@@ -77,7 +74,7 @@ final class PostViewModel {
     // Get posts from local database
     func fetchLocalPosts() -> Observable<[PostDTO]> {
         return Observable.create { observer in
-            let posts = self.coreDataManager.fetchAllPosts()
+            let posts = self.realmService.fetchPosts()
             observer.onNext(posts)
             observer.onCompleted()
             return Disposables.create()

@@ -1,11 +1,12 @@
 //
-//  Post.swift
+//  PostDTO.swift
 //  UPosts
 //
-//  Created by Sanjeev Mishra on 28/08/24.
+//  Created by Sanjeev Mishra on 02/09/24.
 //
 
 import Foundation
+
 
 // Post we are using in app
 struct PostDTO: Equatable {
