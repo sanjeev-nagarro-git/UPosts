@@ -15,7 +15,7 @@ RealmDB is used for local data storage. The project is uses Swift Package Manage
  
 ## Steps to Run the Application
 1. **Download the Code**:
-   - Clone or download the code from the `develop` branch.
+   - Clone or download the code from the `main` branch.
  
 2. **Build the Project**:
    - Open the project in Xcode.
