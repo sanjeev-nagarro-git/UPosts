@@ -17,15 +17,12 @@ class RealmServiceManager {
 
 extension RealmServiceManager: RealmPostServiceProtocol {
     func fetchPosts() -> [PostDTO] {
-        let realm = try! Realm()
         let storedPosts = realm.objects(Post.self).sorted(byKeyPath: "title", ascending: true)
         
         return storedPosts.map { PostDTO(userId: $0.userId, id: $0.id, title: $0.title, body: $0.body, isFavorite: $0.isFavorite) }
     }
     
     func savePosts(_ posts: [PostDTO], completion: @escaping (Bool) -> Void) {
-        let realm = try! Realm()
-
         // Convert PostDTO to Post
         let storedPosts = posts.map { Post(from: $0) }
 
@@ -39,9 +36,6 @@ extension RealmServiceManager: RealmPostServiceProtocol {
     }
     
     func updatePostFavoriteStatus(postId: Int, isFavorite: Bool) {
-        // Get the default Realm instance
-        let realm = try! Realm()
-        
         // Find the post with the specified ID
         if let storedPost = realm.object(ofType: Post.self, forPrimaryKey: postId) {
             // Perform the write transaction to update the `isFavorite` property
