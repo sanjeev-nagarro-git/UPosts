@@ -2,7 +2,7 @@
  
 ## Overview
 UPosts is an iOS application built using Xcode, Swift, RxSwift, RxCocoa, RealmSwift, Alamofire, and following the MVVM architecture pattern. 
-RealmDB is used for local data storage. The project is uses Swift Package Manager (SPM) for dependency management.
+RealmDB is used for local data storage.
  
 ## Features
 - **Login Screen**: Secure login with validation on email and password.
@@ -42,6 +42,9 @@ RealmDB is used for local data storage. The project is uses Swift Package Manage
  
 8. **Offline Mode**:
    - If the internet connection is disabled, the app will still function without issues. The posts and favorites data is stored in RealmDB and accessible offline.
+  
+9. **Unit Test**:
+   - Written unit test cases.
  
 ## Notes
 - Ensure all dependencies are installed and configured via Swift Package Manager before building the project.
@@ -51,8 +54,6 @@ RealmDB is used for local data storage. The project is uses Swift Package Manage
 This project is licensed under the [MIT License](LICENSE).
  
 ---
- 
-This README provides the necessary steps to set up and run the UPosts application. For more details or specific queries, refer to the documentation within the project or contact the development team.
 
 ![Simulator Screenshot - iPhone 15 - 2024-09-03 at 14 40 52](https://github.com/user-attachments/assets/2928fa00-9ba4-460f-bbfe-07a8a7a08a6a)
 ![Simulator Screenshot - iPhone 15 - 2024-09-03 at 14 40 49](https://github.com/user-attachments/assets/d201574a-f689-4bd6-8254-c3da64178d28)
