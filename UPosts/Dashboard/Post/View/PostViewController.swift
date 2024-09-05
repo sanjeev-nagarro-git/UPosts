@@ -35,6 +35,7 @@ class PostViewController: UIViewController {
     private func bindTableView() {
         viewModel.postsSubject
             .bind(to: postTableView.rx.items(cellIdentifier: "cell")) { index, post, cell in
+                cell.textLabel?.numberOfLines = 0
                 cell.textLabel?.text = post.title
                 cell.accessoryType = post.isFavorite ? .checkmark : .none
             }

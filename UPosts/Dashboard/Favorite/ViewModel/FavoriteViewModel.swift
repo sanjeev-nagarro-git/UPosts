@@ -30,13 +30,15 @@ final class FavoriteViewModel: NSObject {
     }
     
     func observeFavorites() {
-        notificationToken = realmService.observeFavoritePosts { [weak self] result in
-            switch result {
-            case .success(let postDTOs):
-                self?._favorites.onNext(postDTOs)
-            case .failure(let error):
+        realmService.observeFavoritePosts()
+            .observe(on: ConcurrentDispatchQueueScheduler(qos: .background)) // Observe on background thread
+            .subscribe(on: MainScheduler.instance) // Update on main thread
+            .subscribe(onNext: { [weak self] postDTOs in
+                guard let self = self else { return }
+                self._favorites.onNext(postDTOs)
+            }, onError: { error in
                 print("Error observing favorites: \(error)")
-            }
-        }
+            })
+            .disposed(by: disposeBag)
     }
 }

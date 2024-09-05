@@ -5,8 +5,8 @@
 //  Created by Sanjeev Mishra on 02/09/24.
 //
 
-import RealmSwift
+import RxSwift
 
 protocol RealmFavoriteServiceProtocol {
-    func observeFavoritePosts(completion: @escaping (Result<[PostDTO], Error>) -> Void) -> NotificationToken?
+    func observeFavoritePosts() -> Observable<[PostDTO]>
 }

@@ -6,6 +6,7 @@
 //
 
 import RealmSwift
+import RxSwift
 
 class RealmServiceManager {
     private var realm: Realm
@@ -54,16 +55,21 @@ extension RealmServiceManager: RealmPostServiceProtocol {
 }
 
 extension RealmServiceManager: RealmFavoriteServiceProtocol {
-    func observeFavoritePosts(completion: @escaping (Result<[PostDTO], any Error>) -> Void) -> RealmSwift.NotificationToken? {
-        let favoritePosts = realm.objects(Post.self).filter("isFavorite == true")
-        
-        return favoritePosts.observe { changes in
-            switch changes {
-            case .initial(let posts), .update(let posts, _, _, _):
-                let postDTOs = posts.map { PostDTO(userId: $0.userId, id: $0.id, title: $0.title, body: $0.body, isFavorite: $0.isFavorite) }
-                completion(.success(Array(postDTOs)))
-            case .error(let error):
-                completion(.failure(error))
+    func observeFavoritePosts() -> Observable<[PostDTO]> {
+        return Observable.create { observer in
+            let favoritePosts = self.realm.objects(Post.self).filter("isFavorite == true")
+            
+            let token = favoritePosts.observe { changes in
+                switch changes {
+                case .initial(let posts), .update(let posts, _, _, _):
+                    let postDTOs = posts.map { PostDTO(userId: $0.userId, id: $0.id, title: $0.title, body: $0.body, isFavorite: $0.isFavorite) }
+                    observer.onNext(Array(postDTOs))
+                case .error(let error):
+                    observer.onError(error)
+                }
+            }
+            return Disposables.create {
+                token.invalidate()
             }
         }
     }
